@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function en JS</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+
+        const anio_humano = 7
+        let num = prompt("Ingrese la edad de la mascota");
+        Calcular_Edad_Canina(num);
+
+        function Calcular_Edad_Canina(edad)
+        {
+            let conversion = anio_humano*edad;
+            alert(`Su mascota tiene ${conversion} años en edad canina`);
+
+        }
+
+    </script>
+</body>
+</html>
