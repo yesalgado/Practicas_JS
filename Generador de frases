@@ -7,6 +7,9 @@
 		.bold{
 			font-weight:bold;
 		}
+		.result{
+			color:green;
+		}
 	</style>
 </head>
 <body>
@@ -16,91 +19,58 @@
 	<section>
 		<article class="form">
 			<form>
-				<label>Escriba una palabra o frase en la caja y esta p&aacute;gina crear&aacute; una frase que le ayudar&aacute; a recordarla.<br/>
+				<label>Escriba una palabra o frase en la caja y esta p&aacute;gina 
+					crear&aacute; una frase que le ayudar&aacute; a recordarla.<br/>
 				<input type="text" value="" id="mnemonic" size="50"/>
 				</label>
-				<input type="button" value="Generar" onclick="letra();return false"; /><br/>
+				<input type="button" value="Generar" onclick="busqueda();return false"; /><br/>
 				<label>Ejemplo: <br/>
 				Si escribes TIERRA podr&iacute; generarse una frase como:<br/>
-				<!-- <p><span class="bold">T</span>&eacute;cnico<br/>
-				<span class="bold">I</span>nteligente<br/>
-				<span class="bold">E</span>labora<br/>
-				<span class="bold">R</span>ectificador<br/>
-				<span class="bold">R</span>eactivo<br/>
-				<span class="bold">A</span>ctivo</p> -->
 			</form>
-			<footer>
-				<div id="frase"><br/>
-					<p>...</p>
-				</div>
-				<div id="frase1"></div>
-				<div id="frase2"></div>
-				<div id="frase3"></div>
-				<div id="frase4"></div>
-				<div id="frase5"></div>
-			</footer>
+			<div id="frase"></div>
+
 		</article>
 	</section>
-<footer id="page_footer">
-	<p>Derechos de autor 2021</p>
-</footer>
+
 <script type="text/javascript">
 
-	function letra()
-	{
-		  let cadena = document.getElementById("mnemonic").value;
-		  let letr = cadena.charAt(0);
-		  let letr1 = cadena.charAt(1);
-		  let letr2 = cadena.charAt(2);
-		  let letr3 = cadena.charAt(3);
-		  let letr4 = cadena.charAt(4);
-		  let letr5 = cadena.charAt(5);
+    function busqueda() {
+	
+		let str = document.getElementById("mnemonic").value;
+		let arr = str.split('');
+		
+		// agregar mas letras
+		let dic = {
+		    a: ['auto', 'alto', 'amarillo','admirable','astuto','altivo'],
+		    b: ['barco', 'bestia', 'buzo', 'boca','bandera'],
+	  		c: ['coco','carpintero','ciclo','cuspide','casco'],
+	  		d: ['dinosaurio','dentista','dósil','dilucidar','desaucio'],
+	  		e: ['estelar','eclesiastico','escarabajo','esponja','enjambre'],
+	  		f: ['funcion','fuerza','flora','fases','fábula'],
+	  		g: ['grado','generoso','genero','galaxia','gozo'],
+	  		h: ['humano','honesto','hablar','hacía','hallar'],
+	  		T: ['TECNICO'],
+	  		I: ['INTELIGENTE'],
+	  		E: ['ELABORA'],
+	  		R: ['RECTIFICADOR', 'REACTIVO'],
+	  		A: ['ACTIVO'],
 
-		  if (letr=='T')
-		  {
-
-		  	document.getElementById('frase').innerHTML="<span style='color: green;'>"+letr+"</span>"+"écnico";
-
-		  };
-
-		  if (letr1=='I')
-		  {
-
-		  	document.getElementById('frase1').innerHTML="<span style='color: green;'>"+letr1+"</span>"+"nteligente";
-
-		  };
-
-		  if (letr2=='E')
-		  {
-
-		  	document.getElementById('frase2').innerHTML="<span style='color: green;'>"+letr2+"</span>"+"labora";
-
-		  };
-
-		    if (letr3=='R')
-		  {
-
-		  	document.getElementById('frase3').innerHTML="<span style='color: green;'>"+letr3+"</span>"+"ectificador";
-
-		  };
-
-		    if (letr4=='R')
-		  {
+		};
+		  
+		for(let i=0; i<(arr).length; i++){
+			for(let x in dic) {
+				if(arr[i] == x) {
+					let array = dic[x];
+					let randomWord = array[Math.floor(Math.random() * array.length)]
+					document.getElementById('frase').innerHTML+= `<span class="result">${x} - ${randomWord} </span><br>`;
+				}
+			}
+		}
+	};
 
 
-		  	document.getElementById('frase4').innerHTML="<span style='color: green;'>"+letr4+"</span>"+"eactivo";
-
-		  };
-
-		      if (letr5=='A')
-		  {
-
-		  	document.getElementById('frase5').innerHTML="<span style='color: green;'>"+letr5+"</span>"+"ctivo";
-
-		  };
-
-	}
 
 </script>
 </body>
 </html>
+
