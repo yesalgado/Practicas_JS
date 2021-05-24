@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Generador de frases</title>
+	<style>
+		.bold{
+			font-weight:bold;
+		}
+		.result{
+			color:green;
+		}
+	</style>
+</head>
+<body>
+<header id="page_header">
+  <h1>Generador de frases</h1>  
+</header>
+	<section>
+		<article class="form">
+			<form>
+				<label>Escriba una palabra o frase en la caja y esta p&aacute;gina 
+					crear&aacute; una frase que le ayudar&aacute; a recordarla.<br/>
+				<input type="text" value="" id="mnemonic" size="50"/>
+				</label>
+				<input type="button" value="Generar" onclick="busqueda();return false"; /><br/>
+				<label>Ejemplo: <br/>
+				Si escribes TIERRA podr&iacute; generarse una frase como:<br/>
+			</form>
+			<div id="frase"></div>
+
+		</article>
+	</section>
+
+<script type="text/javascript">
+
+    function busqueda() {
+	
+		let str = document.getElementById("mnemonic").value;
+		let arr = str.split('');
+		
+		// agregar mas letras
+		let dic = {
+		    a: ['auto', 'alto', 'amarillo','admirable','astuto','altivo'],
+		    b: ['barco', 'bestia', 'buzo', 'boca','bandera'],
+	  		c: ['coco','carpintero','ciclo','cuspide','casco'],
+	  		d: ['dinosaurio','dentista','dósil','dilucidar','desaucio'],
+	  		e: ['estelar','eclesiastico','escarabajo','esponja','enjambre'],
+	  		f: ['funcion','fuerza','flora','fases','fábula'],
+	  		g: ['grado','generoso','genero','galaxia','gozo'],
+	  		h: ['humano','honesto','hablar','hacía','hallar'],
+	  		T: ['TECNICO'],
+	  		I: ['INTELIGENTE'],
+	  		E: ['ELABORA'],
+	  		R: ['RECTIFICADOR', 'REACTIVO'],
+	  		A: ['ACTIVO'],
+
+		};
+		  
+		for(let i=0; i<(arr).length; i++){
+			for(let x in dic) {
+				if(arr[i] == x) {
+					let array = dic[x];
+					let randomWord = array[Math.floor(Math.random() * array.length)]
+					document.getElementById('frase').innerHTML+= `<span class="result">${x} - ${randomWord} </span><br>`;
+				}
+			}
+		}
+	};
+
+
+
+</script>
+</body>
+</html>
